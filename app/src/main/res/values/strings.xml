@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">Makto App</string>
+
+    <string name="open">Mở</string>
+    <string name="close">Đóng</string>
+</resources>
