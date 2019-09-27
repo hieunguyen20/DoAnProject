@@ -13,11 +13,15 @@ import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.core.content.ContextCompat;
 
 import com.example.myapplication.R;
 import com.google.android.material.textfield.TextInputLayout;
+
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 @SuppressLint("AppCompatCustomView")
 public class PasswordEditText extends EditText {
@@ -27,7 +31,6 @@ public class PasswordEditText extends EditText {
     boolean userValidate = false;
     Drawable drawable;
     int ALPHA = (int)(255 * .70f);
-    String MATCHER_PATTERN = "";
 
     public PasswordEditText(Context context) {
         super(context);
@@ -63,9 +66,7 @@ public class PasswordEditText extends EditText {
             setOnFocusChangeListener(new OnFocusChangeListener() {
                 @Override
                 public void onFocusChange(View view, boolean b) {
-                   if (!b){
 
-                   }
                 }
             });
         }
