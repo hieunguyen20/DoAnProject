@@ -4,6 +4,7 @@ import android.util.Log;
 
 import com.example.myapplication.ConnectInternet.DownloadJSON;
 import com.example.myapplication.Model.ObjectClass.LoaiSanPham;
+import com.example.myapplication.View.TrangChu.TrangChuActivity;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -20,6 +21,7 @@ public class XuLyJSONMenu {
         List<LoaiSanPham> loaiSanPhamList = new ArrayList<>();
 
         try {
+            Log.d("data", dulieujson);
             JSONObject jsonObject = new JSONObject(dulieujson);
             JSONArray loaisanpham = jsonObject.getJSONArray("LOAISANPHAM");
             int count = loaisanpham.length();
@@ -45,11 +47,16 @@ public class XuLyJSONMenu {
         List<HashMap<String, String>> attrs = new ArrayList<>();
         String dataJSON = "";
 
-        String duongdan ="http://192.168.43.254/webservice/loaisanpham.php";
-//        String duongdan ="http://192.168.43.17/webservice/loaisanpham.php";
+        String duongdan =  TrangChuActivity.SERVER_NAME ;
+
+        HashMap<String, String> hsHam = new HashMap<>();
+        hsHam.put("ham", "LayDanhSachMenu");
+
         HashMap<String, String> hsMaLoaiCha = new HashMap<>();
         hsMaLoaiCha.put("maloaicha", String.valueOf(maloaisp));
+
         attrs.add(hsMaLoaiCha);
+        attrs.add(hsHam);
         DownloadJSON downloadJSON = new DownloadJSON(duongdan,attrs);
         // End phương thức post
         downloadJSON.execute();

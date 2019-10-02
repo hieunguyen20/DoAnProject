@@ -3,6 +3,15 @@ package com.example.myapplication.Model.ObjectClass;
 public class SanPham {
     int MASP, GIA, SOLUONG,MALOAISP,MANGUOIDUNG, LUOTMUA;
     String ANHLON, ANHNHO, THONGTIN;
+    String TENSP;
+
+    public String getTENSP() {
+        return TENSP;
+    }
+
+    public void setTENSP(String TENSP) {
+        this.TENSP = TENSP;
+    }
 
     public int getMASP() {
         return MASP;

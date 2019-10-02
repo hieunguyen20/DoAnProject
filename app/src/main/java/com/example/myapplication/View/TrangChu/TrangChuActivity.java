@@ -18,10 +18,11 @@ import android.widget.LinearLayout;
 
 import com.example.myapplication.Adapter.ExpandAdapter;
 import com.example.myapplication.Adapter.ViewPagerAdapter;
+import com.example.myapplication.Model.DangNhap_DangKy.ModelDangNhap;
 import com.example.myapplication.Model.ObjectClass.LoaiSanPham;
 import com.example.myapplication.Presenter.TrangChu.XuLyMenu.PresenterLogicXuLyMenu;
 import com.example.myapplication.R;
-import com.example.myapplication.View.DangNhap.DangNhapActivity;
+import com.example.myapplication.View.DangNhap_DangKy.DangNhapActivity;
 import com.google.android.material.appbar.AppBarLayout;
 import com.google.android.material.appbar.CollapsingToolbarLayout;
 import com.google.android.material.tabs.TabLayout;
@@ -29,6 +30,9 @@ import com.google.android.material.tabs.TabLayout;
 import java.util.List;
 
 public class TrangChuActivity extends AppCompatActivity implements ViewXuLyMenu, AppBarLayout.OnOffsetChangedListener{
+
+    public static final String SERVER_NAME= "http://192.168.43.254/webservice/apiserver.php";
+
     Toolbar toolbar;
     TabLayout tabLayout;
     ViewPager viewPager;
@@ -37,6 +41,8 @@ public class TrangChuActivity extends AppCompatActivity implements ViewXuLyMenu,
     ExpandableListView expandableListView;
     AppBarLayout appBarLayout;
     CollapsingToolbarLayout collapsingToolbarLayout;
+    Menu menu;
+    ModelDangNhap modelDangNhap;
 
 
     @Override
@@ -95,7 +101,7 @@ public class TrangChuActivity extends AppCompatActivity implements ViewXuLyMenu,
 
     @Override
     public void HienThiDanhSachMenu(List<LoaiSanPham> loaiSanPhamList) {
-        Log.d("kiem tra drawerMenu", loaiSanPhamList.get(0).getTENLOAISP());
+//        Log.d("kiem tra drawerMenu", loaiSanPhamList.get(0).getTENLOAISP());
         ExpandAdapter expandAdapter = new ExpandAdapter(this,loaiSanPhamList);
         expandableListView.setAdapter(expandAdapter);
         expandAdapter.notifyDataSetChanged();

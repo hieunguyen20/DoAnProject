@@ -1,4 +1,4 @@
-package com.example.myapplication.View.DangNhap;
+package com.example.myapplication.View.DangNhap_DangKy;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -8,7 +8,6 @@ import android.os.Bundle;
 
 import com.example.myapplication.Adapter.ViewPagerAdapterDangNhap;
 import com.example.myapplication.R;
-import com.google.android.material.appbar.CollapsingToolbarLayout;
 import com.google.android.material.tabs.TabLayout;
 
 public class DangNhapActivity extends AppCompatActivity {

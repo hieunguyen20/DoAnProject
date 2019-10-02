@@ -4,6 +4,7 @@ public class ThuongHieu {
     int MATHUONGHIEU, LUOTMUA;
     String TENTHUONHIEU, HINHTHUONGHIEU;
 
+
     public int getMATHUONGHIEU() {
         return MATHUONGHIEU;
     }

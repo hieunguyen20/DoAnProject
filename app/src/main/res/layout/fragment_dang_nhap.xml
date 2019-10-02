@@ -13,6 +13,7 @@
         android:layout_margin="10dp">
 
         <com.example.myapplication.CustomView.ClearEditText
+            android:id="@+id/edDiaChiEmailDN"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Địa chỉ email"
@@ -26,6 +27,7 @@
         android:layout_margin="10dp">
 
         <com.example.myapplication.CustomView.PasswordEditText
+            android:id="@+id/edMatKhauDN"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Mật khẩu"
@@ -43,6 +45,7 @@
         android:textColor="@color/colorPrimary" />
 
     <Button
+        android:id="@+id/btnDangNhap"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
