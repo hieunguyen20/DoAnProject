@@ -51,7 +51,7 @@ public class ModelTimKiem {
                 SanPham sanPham = new SanPham();
                 JSONObject object = jsonArrayDanhSachSanPham.getJSONObject(i);
 
-                sanPham.setTENSP(object.getString("MASP"));
+                sanPham.setMASP(object.getInt("MASP"));
                 sanPham.setTENSP(object.getString("TENSP"));
                 sanPham.setGIA(object.getInt("GIATIEN"));
                 sanPham.setANHLON(TrangChuActivity.SERVER + object.getString("HINHSANPHAM"));

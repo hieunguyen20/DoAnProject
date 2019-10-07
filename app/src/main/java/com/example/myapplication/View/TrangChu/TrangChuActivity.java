@@ -14,7 +14,9 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ExpandableListView;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 
 import com.example.myapplication.Adapter.ExpandAdapter;
@@ -46,7 +48,8 @@ public class TrangChuActivity extends AppCompatActivity implements ViewXuLyMenu,
     CollapsingToolbarLayout collapsingToolbarLayout;
     Menu menu;
     ModelDangNhap modelDangNhap;
-    LinearLayout linearLayoutSearch;
+    Button btnSearch;
+    ImageButton im_btn_Search;
 
 
     @Override
@@ -61,7 +64,8 @@ public class TrangChuActivity extends AppCompatActivity implements ViewXuLyMenu,
         appBarLayout = findViewById(R.id.appbar);
         collapsingToolbarLayout = findViewById(R.id.collapsing_toolbar);
         expandableListView = findViewById(R.id.epMenu);
-        linearLayoutSearch = findViewById(R.id.lnSearch);
+        btnSearch = findViewById(R.id.btnSearch);
+        im_btn_Search = findViewById(R.id.im_btn_Search);
 
         toolbar.setTitle("");
         setSupportActionBar(toolbar);
@@ -79,7 +83,8 @@ public class TrangChuActivity extends AppCompatActivity implements ViewXuLyMenu,
         PresenterLogicXuLyMenu logicXuLyMenu = new PresenterLogicXuLyMenu(this);
         logicXuLyMenu.LayDanhSachMenu();
 
-        linearLayoutSearch.setOnClickListener(this);
+        btnSearch.setOnClickListener(this);
+        im_btn_Search.setOnClickListener(this);
 
         appBarLayout.addOnOffsetChangedListener(this);
     }
@@ -127,8 +132,8 @@ public class TrangChuActivity extends AppCompatActivity implements ViewXuLyMenu,
             LinearLayout linearLayout = findViewById(R.id.lnSearch);
             linearLayout.animate().alpha(0).setDuration(200);
 
-                MenuItem itSearch = menu.findItem(R.id.itSearch);
-                itSearch.setVisible(true);
+            MenuItem itSearch = menu.findItem(R.id.itSearch);
+            itSearch.setVisible(true);
 
         } else {
             LinearLayout linearLayout = findViewById(R.id.lnSearch);
@@ -147,10 +152,14 @@ public class TrangChuActivity extends AppCompatActivity implements ViewXuLyMenu,
     @Override
     public void onClick(View view) {
         int id = view.getId();
-        switch (id){
-            case R.id.lnSearch:
+        switch (id) {
+            case R.id.im_btn_Search:
                 Intent iTimkiem = new Intent(this, TimKiemActivity.class);
                 startActivity(iTimkiem);
+                break;
+            case R.id.btnSearch:
+                Intent iTimkiem1 = new Intent(this, TimKiemActivity.class);
+                startActivity(iTimkiem1);
                 break;
         }
     }

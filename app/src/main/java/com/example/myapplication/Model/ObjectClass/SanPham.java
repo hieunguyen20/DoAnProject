@@ -1,9 +1,30 @@
 package com.example.myapplication.Model.ObjectClass;
 
+import java.util.List;
+
 public class SanPham {
-    int MASP, GIA, SOLUONG,MALOAISP,MANGUOIDUNG, LUOTMUA;
+    int MASP, GIA, SOLUONG,MALOAISP,MANGUOIDUNG, LUOTMUA, MATHUONGHIEU;
     String ANHLON, ANHNHO, THONGTIN;
     String TENSP;
+    List<ChiTietSanPham> chiTietSanPhamList;
+
+    public int getMATHUONGHIEU() {
+        return MATHUONGHIEU;
+    }
+
+    public void setMATHUONGHIEU(int MATHUONGHIEU) {
+        this.MATHUONGHIEU = MATHUONGHIEU;
+    }
+
+
+
+    public List<ChiTietSanPham> getChiTietSanPhamList() {
+        return chiTietSanPhamList;
+    }
+
+    public void setChiTietSanPhamList(List<ChiTietSanPham> chiTietSanPhamList) {
+        this.chiTietSanPhamList = chiTietSanPhamList;
+    }
 
     public String getTENSP() {
         return TENSP;

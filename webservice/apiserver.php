@@ -51,6 +51,44 @@
 		case 'LayDanhSachSanPhamTheoMaThuongHieu':
 			$ham();
 			break;
+
+
+
+
+
+		case 'TimKiemSanPhamTheoTenSP':
+			$ham();
+			break;
+
+	}
+
+	function TimKiemSanPhamTheoTenSP(){
+		global $conn;
+		$chuoijson = array();
+
+		if(isset($_POST["tensp"])|| isset($_POST["limit"])){
+			$tensp = $_POST["tensp"];
+			$limit = $_POST["limit"];
+			// 	if(isset($_GET["tensp"])|| isset($_GET["limit"])){
+			// $tensp = $_GET["tensp"];
+			// $limit = $_GET["limit"];
+		}
+		$truyvan = "SELECT * FROM sanpham WHERE TENSP LIKE '%".$tensp."%'";
+		
+
+		$ketqua = mysqli_query($conn,$truyvan);
+
+		echo "{";
+		echo "\"DANHSACHSANPHAM\":";
+
+		if($ketqua){
+			while ($dong = mysqli_fetch_array($ketqua)) {
+				array_push($chuoijson,array("MASP"=>$dong["MASP"],"TENSP"=>$dong["TENSP"],"GIATIEN"=>$dong["GIA"],"HINHSANPHAM"=>$dong["HINHLON"],"HINHSANPHAMNHO"=>$dong["HINHNHO"]));
+			}
+		}
+
+		echo json_encode($chuoijson, JSON_UNESCAPED_UNICODE);
+		echo "}";
 	}
 
 	function LayDanhSachSanPhamTheoMaThuongHieu(){
@@ -149,7 +187,7 @@
 	}
 
 		function LayDanhSachSanPhamDanhMucTheoMaLoai($conn,$maloaisp,$chuoijson,$limit){
-			$truyvantienich="SELECT * FROM loaisanpham lsp, sanpham sp WHERE lsp.MALOAISP=".$maloaisp." AND lsp.MALOAISP = sp.MALOAISP ORDER BY sp.LUOTMUA DESC LIMIT ".$limit;
+			$truyvantienich="SELECT * FROM loaisanpham lsp, sanpham sp WHERE lsp.MALOAISP=".$maloaisp." AND lsp.MALOAISP = sp.MALOAISP ORDER BY sp.LUOTMUA DESC LIMIT ".$limit.",20";
 				$ketquacon=mysqli_query($conn,$truyvantienich);
 
 				if($ketquacon){
@@ -163,7 +201,7 @@
 
 
 	function LayDanhSachSanPhamTheoMaLoaiThuongHieu($conn,$maloaith,$chuoijson,$limit){
-			$truyvantienich="SELECT * FROM thuonghieu th, sanpham sp WHERE th.MATHUONGHIEU=".$maloaith." AND th.MATHUONGHIEU = sp.MATHUONGHIEU ORDER BY sp.LUOTMUA DESC LIMIT ".$limit;
+			$truyvantienich="SELECT * FROM thuonghieu th, sanpham sp WHERE th.MATHUONGHIEU=".$maloaith." AND th.MATHUONGHIEU = sp.MATHUONGHIEU ORDER BY sp.LUOTMUA DESC LIMIT ".$limit.",20";
 				$ketquacon=mysqli_query($conn,$truyvantienich);
 
 				if($ketquacon){
