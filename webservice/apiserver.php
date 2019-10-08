@@ -52,14 +52,48 @@
 			$ham();
 			break;
 
-
-
-
-
 		case 'TimKiemSanPhamTheoTenSP':
 			$ham();
 			break;
 
+		case 'LaySanPhamVsChitietTheoMaSP':
+			$ham();
+			break;
+
+	}
+
+	function LaySanPhamVsChitietTheoMaSP(){
+		global $conn;
+		$chuoijson = array();
+		$chuoijsonchitiet = array();
+		if(isset($_POST["masp"])){
+			$masp = $_POST["masp"];
+		}
+
+		$truyvan = "SELECT * FROM sanpham WHERE MASP=".$masp;
+		$ketqua = mysqli_query($conn, $truyvan);
+
+		echo "{";
+		echo "\"CHITIETSANPHAM\":";
+
+		$truyvanchitiet = "SELECT * FROM chitietsanpham WHERE MASP=".$masp;
+		$ketquachitiet = mysqli_query($conn, $truyvanchitiet);
+
+		if($ketquachitiet){
+			while ($dongchitiet = mysqli_fetch_array($ketquachitiet)) {
+				array_push($chuoijsonchitiet, array($dongchitiet["TENCHITIET"]=>$dongchitiet["GIATRI"]));
+			}
+		}
+
+
+		if($ketqua){
+			while ($dong = mysqli_fetch_array($ketqua)) {
+				array_push($chuoijson,array("MASP"=>$dong["MASP"],"TENSP"=>$dong["TENSP"],"GIATIEN"=>$dong["GIA"],"SOLUONG"=>$dong["SOLUONG"],"HINHSANPHAM"=>$dong["HINHLON"],"HINHSANPHAMNHO"=>$dong["HINHNHO"],"THONGTIN"=>$dong["THONGTIN"],"MALOAISP"=>$dong["MALOAISP"],"MATHUONGHIEU"=>$dong["MATHUONGHIEU"],"MANGUOIDUNG"=>$dong["MANGUOIDUNG"],"LUOTMUA"=>$dong["LUOTMUA"],"THONGSOKYTHUAT"=>$chuoijsonchitiet));
+			}
+		}
+
+		echo json_encode($chuoijson, JSON_UNESCAPED_UNICODE);
+		echo "}";
 	}
 
 	function TimKiemSanPhamTheoTenSP(){
